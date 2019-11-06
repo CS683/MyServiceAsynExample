@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.bu.myserviceasynexample">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BIND_JOB_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".Service.MyBgServiceST"
+            android:enabled="true"
+            />
+        <service
+            android:name=".Service.MyBgServiceDT"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".Service.MyBgIntentService"
+            android:exported="false" />
+        <service
+            android:name=".Service.MyLocalBoundService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".BoundServiceActivity"
+            android:label="@string/title_activity_bound_service"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".JobSchedulerActivity"></activity>
+
+        <service
+            android:name=".Service.MyRemoteBoundService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=".my_process" />
+
+        <activity
+            android:name=".RestClientActivity"
+            android:label="@string/title_activity_rest_client"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".Service.MyFgService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name=".Service.MyJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+
+
+    </application>
+
+</manifest>
