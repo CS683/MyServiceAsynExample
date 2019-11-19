@@ -84,6 +84,7 @@ public class BoundServiceActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void showTime(View v){
+        if (!isLocalBound) return;
         TextView myTextView = (TextView) findViewById(R.id.textView);
         myTextView.setText(myLocalBoundService.getCurrentTime());
     }
