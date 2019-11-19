@@ -71,7 +71,7 @@ public class RestClientActivity extends AppCompatActivity {
             // Post: aResult is toasted
             EditText contentText = (EditText)findViewById(R.id.contentid);
             contentText.setText(aResult);
-            Log.d("hii", aResult);
+            Log.d("RestClientActivity", aResult);
 
         }
 

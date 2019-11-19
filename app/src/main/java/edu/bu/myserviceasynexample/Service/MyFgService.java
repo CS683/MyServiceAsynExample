@@ -43,10 +43,12 @@ public class MyFgService extends Service {
 
     private static final String LOG_TAG = "ForegroundService";
 
+    private NotificationManager notificationManager;
+
     public MyFgService() {
     }
 
-    private NotificationManager notificationManager;
+
 
     @Override
     public void onCreate() {
@@ -61,9 +63,10 @@ public class MyFgService extends Service {
         if (intent.getAction ().equals (ACTION.STARTFOREGROUND_ACTION)) {
             Log.i (LOG_TAG, "start service ");
 
+            notificationManager = (NotificationManager)
+                    this.getSystemService (Context.NOTIFICATION_SERVICE);
+
             Notification notification = buildNotification ();
-       //     notificationManager = (NotificationManager)
-       //             this.getSystemService (Context.NOTIFICATION_SERVICE);
       //      notificationManager.notify (NOTIFICATION_SERVICE_ID, notification);
 
             startForeground(NOTIFICATION_SERVICE_ID, notification);
@@ -153,15 +156,20 @@ public class MyFgService extends Service {
 
             notificationManager.createNotificationChannel(channel);
 
-            NotificationCompat.Action action = new NotificationCompat.Action.Builder(R.drawable.ic_play,
+            NotificationCompat.Action playAction = new NotificationCompat.Action.Builder(R.drawable.ic_play,
                     "play", pplayIntent).build();
+            NotificationCompat.Action playLaterAction = new NotificationCompat.Action.Builder(R.drawable.ic_play,
+                    "play later", pplayIntent).build();
+
+
 
             notification =  new NotificationCompat.Builder(this,channelId)
                     .setSmallIcon(R.drawable.ic_fgservice)
                     .setContentTitle ("Example Foreground Service")
                     .setContentText ("Foreground Service")
                     .setContentIntent(pendingIntent)
-                    .addAction (action)
+                    .addAction (playAction)
+                    .addAction (playLaterAction)
                     .build();
         }
 

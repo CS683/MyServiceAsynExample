@@ -32,10 +32,10 @@ public class MyBgIntentService extends IntentService {
 
         // do you background job such as update database
 
-        mHandler.post(new Runnable() {
+      mHandler.post(new Runnable() {
             public void run() {
                 Toast.makeText(getApplicationContext(),
-                        "service started", Toast.LENGTH_LONG);
+                        "service started", Toast.LENGTH_LONG).show();
             }
 
         });
