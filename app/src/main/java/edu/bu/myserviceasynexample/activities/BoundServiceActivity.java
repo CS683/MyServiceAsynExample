@@ -1,4 +1,4 @@
-package edu.bu.myserviceasynexample;
+package edu.bu.myserviceasynexample.activities;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -12,13 +12,14 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.bu.myserviceasynexample.Service.MyLocalBoundService;
-import edu.bu.myserviceasynexample.Service.MyRemoteBoundService;
+import edu.bu.myserviceasynexample.R;
+import edu.bu.myserviceasynexample.services.MyLocalBoundService;
+import edu.bu.myserviceasynexample.services.MyRemoteBoundService;
 
 public class BoundServiceActivity extends AppCompatActivity {
 
@@ -85,7 +86,7 @@ public class BoundServiceActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void showTime(View v){
         if (!isLocalBound) return;
-        TextView myTextView = (TextView) findViewById(R.id.textView);
+        TextView myTextView =  findViewById(R.id.textView);
         myTextView.setText(myLocalBoundService.getCurrentTime());
     }
 

@@ -1,19 +1,13 @@
-package edu.bu.myserviceasynexample.Service;
+package edu.bu.myserviceasynexample.services;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.IBinder;
-import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
-
-import edu.bu.myserviceasynexample.R;
 
 public class MyBgServiceDT extends Service {
     private static final String TAG = "BgServiceDiffThread";
+    Thread thread;
 
     public MyBgServiceDT() {
     }
@@ -28,18 +22,26 @@ public class MyBgServiceDT extends Service {
         Log.d(TAG, "Service onCreate");
     }
 
+    /**
+     * The main method needs to be override in the service.
+     * It is called when the service receives the intent
+     * from startService(intent)
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         Log.d(TAG, "Service onStartCommand " + startId);
         final int currentId = startId;
-        new Thread(new Runnable() {
+
+        // create a background thread to execute this long operation
+        thread = new Thread(new Runnable() {
             public void run() {
                 new LongOperation().longWait(TAG,currentId);
                 Log.d(TAG, "long operation finish");
             }
-        }).start ();
+        });
+        thread.start();
 
-
+        stopSelf();
         return Service.START_STICKY;
     }
 
@@ -47,5 +49,6 @@ public class MyBgServiceDT extends Service {
     @Override
     public void onDestroy(){
         Log.d(TAG, "Service onDestroy");
+
     }
 }

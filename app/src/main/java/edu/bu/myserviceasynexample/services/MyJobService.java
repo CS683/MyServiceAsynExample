@@ -1,15 +1,15 @@
-package edu.bu.myserviceasynexample.Service;
+package edu.bu.myserviceasynexample.services;
 
 import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Created by danazh on 4/29/18.
- */
-@TargetApi(21)
+import androidx.annotation.RequiresApi;
+
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class MyJobService extends JobService {
 
     @Override

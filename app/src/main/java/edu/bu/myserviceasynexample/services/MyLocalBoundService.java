@@ -1,4 +1,4 @@
-package edu.bu.myserviceasynexample.Service;
+package edu.bu.myserviceasynexample.services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -27,6 +27,11 @@ public class MyLocalBoundService extends Service {
     }
 
 
+    /**
+     *
+     * Create a IBinder as the communication channel
+     * between the client and this service
+     */
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(TAG,"service onBind");
@@ -44,7 +49,8 @@ public class MyLocalBoundService extends Service {
         Log.d(TAG, "Service onDestroy");
     }
 
-
+    // simply returns the service itself
+    // as this is a local service
     public class MyLocalBinder extends Binder  {
         public MyLocalBoundService getService() {
             return MyLocalBoundService.this;

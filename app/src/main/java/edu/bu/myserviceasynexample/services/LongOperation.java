@@ -1,11 +1,11 @@
-package edu.bu.myserviceasynexample.Service;
+package edu.bu.myserviceasynexample.services;
 
 import android.util.Log;
 
 /**
- * Created by danazh on 10/3/17.
+ * This is a POJO class, simulating a long operation
+ * that should be executed in the background thread
  */
-
 public class LongOperation {
     public void longWait(String tag, int id){
         Log.d(tag, "execute long operation");
@@ -15,6 +15,7 @@ public class LongOperation {
                     try {
                         wait(endTime - System.currentTimeMillis());
                     }catch (Exception e) {
+                        Log.d(tag, "error");
                     }
                 }
         }

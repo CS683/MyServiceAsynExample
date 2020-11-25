@@ -1,8 +1,7 @@
-package edu.bu.myserviceasynexample.Service;
+package edu.bu.myserviceasynexample.services;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Handler;
@@ -11,11 +10,17 @@ import android.os.Messenger;
 import android.util.Log;
 import android.widget.Toast;
 
-import static android.content.ContentValues.TAG;
-
+/**
+ * This is a remote bound service
+ * This service runs in another process my_process
+ * as specified in the manifest file
+ */
 public class MyRemoteBoundService extends Service {
 
     private static final String TAG = "RemoteBoundService";
+
+    // Since this service will not be in the same process as the client
+    // we need to use a messenger to create between different processes
     final Messenger myMessenger = new Messenger (new IncomingHandler());
 
     public MyRemoteBoundService() {
@@ -48,7 +53,6 @@ public class MyRemoteBoundService extends Service {
         public void handleMessage(Message msg) {
             Bundle data = msg.getData();
             String dataString = data.getString("MyString");
-            Toast.makeText(getApplicationContext(),dataString, Toast.LENGTH_LONG).show();
         }
     }
 

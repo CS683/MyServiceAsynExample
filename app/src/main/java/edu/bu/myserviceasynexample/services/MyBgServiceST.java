@@ -1,4 +1,4 @@
-package edu.bu.myserviceasynexample.Service;
+package edu.bu.myserviceasynexample.services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -25,11 +25,18 @@ public class MyBgServiceST extends Service {
         Log.d(TAG, "Service onCreate");
     }
 
+    /**
+     * The main method needs to be override in the service.
+     * It is called when the service receives the intent
+     * from startService(intent)
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         Log.d(TAG, "Service onStartCommand ");
 
-        //some background operation here
+        //This long operation will block the UI thread
+        // and cause the app freeze.
+        // It should be executed in a background thread.
         new LongOperation().longWait(TAG, startId);
 
         Toast.makeText(this, "service started", Toast.LENGTH_LONG).show();

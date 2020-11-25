@@ -1,4 +1,4 @@
-package edu.bu.myserviceasynexample;
+package edu.bu.myserviceasynexample.activities;
 
 import android.annotation.TargetApi;
 import android.app.job.JobInfo;
@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import edu.bu.myserviceasynexample.Service.MyJobService;
+import edu.bu.myserviceasynexample.R;
+import edu.bu.myserviceasynexample.services.MyJobService;
 
 public class JobSchedulerActivity extends AppCompatActivity {
 

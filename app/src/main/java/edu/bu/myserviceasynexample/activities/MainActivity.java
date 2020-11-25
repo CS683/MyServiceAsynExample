@@ -1,4 +1,4 @@
-package edu.bu.myserviceasynexample;
+package edu.bu.myserviceasynexample.activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -19,10 +19,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import edu.bu.myserviceasynexample.Service.MyBgIntentService;
-import edu.bu.myserviceasynexample.Service.MyBgServiceDT;
-import edu.bu.myserviceasynexample.Service.MyBgServiceST;
-import edu.bu.myserviceasynexample.Service.MyFgService;
+import edu.bu.myserviceasynexample.R;
+import edu.bu.myserviceasynexample.services.MyBgServiceDT;
+import edu.bu.myserviceasynexample.services.MyBgServiceST;
+import edu.bu.myserviceasynexample.services.MyFgService;
+import edu.bu.myserviceasynexample.services.MyJobIntentService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById (R.id.toolbar);
+        Toolbar toolbar = findViewById (R.id.toolbar);
         setSupportActionBar (toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById (R.id.fab);
+        FloatingActionButton fab = findViewById (R.id.fab);
         fab.hide ();
     }
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId ();
-        TextView myTextView = (TextView) findViewById (R.id.textview1id);
+        TextView myTextView = findViewById (R.id.textview1id);
 
         //noinspection SimplifiableIfStatement
         switch (id) {
@@ -66,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bgintentserv:
                 myTextView.setText ("start background intent service");
-                startService (new Intent (this, MyBgIntentService.class));
+                //startService (new Intent (this, MyBgIntentService.class));
+                // use job intent service instead
+                 Intent mIntent = new Intent(this, MyJobIntentService.class);
+                 MyJobIntentService.enqueueWork(this, mIntent);
                 break;
             case R.id.boundserv:
                 startActivity (new Intent (this, BoundServiceActivity.class));

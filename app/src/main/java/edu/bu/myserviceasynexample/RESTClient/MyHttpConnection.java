@@ -70,20 +70,20 @@ public class MyHttpConnection {
     }
 
 
-    public Greeting parseGreeting(InputStreamReader inReader) throws IOException {
-        Greeting greeting = new Greeting();
-        JsonReader jsonReader = new JsonReader(inReader);
-        jsonReader.beginObject();
-        while (jsonReader.hasNext()){
-            String key = jsonReader.nextName();
-            if (key.equals("id")) {
-                greeting.setId(Integer.parseInt(jsonReader.nextString()));
-            }else if (key.equals("content")) {
-                greeting.setGreetingname(jsonReader.nextString());
-            }
-        }
-        return greeting;
-    }
+//    public Greeting parseGreeting(InputStreamReader inReader) throws IOException {
+//        Greeting greeting = new Greeting();
+//        JsonReader jsonReader = new JsonReader(inReader);
+//        jsonReader.beginObject();
+//        while (jsonReader.hasNext()){
+//            String key = jsonReader.nextName();
+//            if (key.equals("id")) {
+//                greeting.setId(Integer.parseInt(jsonReader.nextString()));
+//            }else if (key.equals("content")) {
+//                greeting.setGreetingname(jsonReader.nextString());
+//            }
+//        }
+//        return greeting;
+//    }
 
 
 }

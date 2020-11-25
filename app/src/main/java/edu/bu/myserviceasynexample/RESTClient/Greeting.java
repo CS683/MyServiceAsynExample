@@ -1,8 +1,5 @@
 package edu.bu.myserviceasynexample.RESTClient;
 
-/**
- * Created by danazh on 11/7/17.
- */
 
 public class Greeting {
     public int id;
@@ -26,6 +23,6 @@ public class Greeting {
 
     @Override
     public String toString() {
-        return new String ("id:" +getId() + "   greeting: " + getGreetingname());
+        return "id:" +getId() + "   greeting: " + getGreetingname();
     }
 }
