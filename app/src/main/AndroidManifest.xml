@@ -8,9 +8,7 @@
     <uses-permission android:name="android.permission.BIND_JOB_SERVICE"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -32,26 +30,20 @@
         </activity>
 
         <service
-            android:name=".services.MyBgServiceST"
-            android:enabled="true"
-            />
+            android:name=".services.MyBgServiceST" />
+
         <service
-            android:name=".services.MyBgServiceDT"
-            android:enabled="true"
-            android:exported="false" />
+            android:name=".services.MyBgServiceDT" />
+
         <service
-            android:name=".services.MyBgIntentService"
-            android:exported="false" />
+            android:name=".services.MyBgIntentService" />
 
         <service
             android:name=".services.MyJobIntentService"
-            android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <service
-            android:name=".services.MyLocalBoundService"
-            android:enabled="true"
-            android:exported="false" />
+            android:name=".services.MyLocalBoundService" />
 
         <activity
             android:name=".activities.BoundServiceActivity"
@@ -62,8 +54,6 @@
 
         <service
             android:name=".services.MyRemoteBoundService"
-            android:enabled="true"
-            android:exported="false"
             android:process=".Myprocess"/>
 
         <activity
@@ -72,15 +62,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".services.MyFgService"
-            android:enabled="true"
-            android:exported="false" />
+            android:name=".services.MyFgService" />
 
         <service
             android:name=".services.MyJobService"
-            android:enabled="true"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             new String[]{Manifest.permission.CALL_PHONE},
                             CALL_PHONE_PERMREQ);
 
+
                 } else {
                     Intent callIntent = new Intent (Intent.ACTION_CALL, Uri.parse ("tel:" + "7777"));
                     startActivity (callIntent);
